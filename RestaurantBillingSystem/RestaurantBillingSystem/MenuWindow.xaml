@@ -1,0 +1,130 @@
+﻿<Window x:Class="RestaurantBillingApp.MenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantBillingApp"
+        mc:Ignorable="d"
+        Title="Restaurant Bill Calculator App" Height="650" Width="910" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        
+        <Style x:Key="buttonStyle2" TargetType="Button">
+            <Setter Property="Width" Value="170"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="Background" Value="#800000"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+            
+        </Style>
+        
+    </Window.Resources>
+    <Grid Background="#FFF8DC">
+        
+        <Label Content="Menu Items" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="30" FontWeight="DemiBold" Margin="25,15,0,0"/>
+        <Label x:Name="billNumber" Content="Bill: 0" HorizontalAlignment="Right" Margin="25,25,30,0" VerticalAlignment="Top" FontSize="25" FontWeight="SemiBold"/>
+
+        <GroupBox Header="Beverage Menu" HorizontalAlignment="Left" VerticalAlignment="Top"
+                  Height="250"  Width="410" Margin="25,80,0,0" 
+                  FontStyle="Italic" FontSize="15" FontFamily="cursive" BorderBrush="#800000" >
+            
+            <ListBox x:Name="listBeverage" Margin="7,7,7,7" 
+                     ItemsSource="{Binding}" 
+                     FontFamily="Courier New" 
+                     Background="#F5DEB3" 
+                     BorderThickness="0"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                
+                <ListBox.ItemTemplate>
+                    
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Content="{Binding}" 
+                                      IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=LostFocus}">
+                                                       </CheckBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                
+            </ListBox>
+        </GroupBox>
+        
+        <GroupBox Header="MainCourse Menu"  VerticalAlignment="Top" HorizontalAlignment="Right"  
+                   Width="410" Height="250" Margin="0,80,25,0" 
+                  FontStyle="Italic" FontSize="15" FontFamily="cursive" BorderBrush="#800000">
+            <ListBox x:Name="listMainCourse" Margin="7,7,7,7" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ItemsSource="{Binding}" FontFamily="Courier New" Background="#F5DEB3" BorderThickness="0">
+                
+                <ListBox.ItemTemplate>
+                    
+                    <DataTemplate>
+                        
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Content="{Binding}" IsChecked="{Binding IsSelected, Mode=TwoWay}"></CheckBox>
+                        </StackPanel>
+                        
+                    </DataTemplate>
+                    
+                </ListBox.ItemTemplate>
+                
+            </ListBox>
+        </GroupBox>
+        <GroupBox Header="Appetizer Menu" VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                  Width="410"  Height="200" Margin="25,0,0,80" 
+                  FontStyle="Italic" FontSize="15" FontFamily="cursive" BorderBrush="#800000">
+            
+            <ListBox x:Name="listAppetizer" Margin="7,7,7,7" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ItemsSource="{Binding}" FontFamily="Courier New" Background="#F5DEB3" BorderThickness="0">
+                
+                <ListBox.ItemTemplate>
+                    
+                    <DataTemplate>
+                        
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Content="{Binding}" IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
+                        </StackPanel>
+                        
+                    </DataTemplate>
+                    
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+        </GroupBox>
+        
+        <GroupBox Header="Dessert Menu" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                  Width="410" Height="200" Margin="0,0,25,80" 
+                  FontStyle="Italic" FontSize="15" FontFamily="cursive" BorderBrush="#800000">
+            
+            
+            <ListBox x:Name="listDessert" Margin="7,7,7,7" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ItemsSource="{Binding}" FontFamily="Courier New" Background="#F5DEB3" BorderThickness="0">
+                
+                
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Content="{Binding}" IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
+                        </StackPanel>
+                        
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                
+                
+            </ListBox>
+        </GroupBox>
+
+        <Button Margin="30,0,0,20" x:Name="btnViewOrderBill" Content="View Order and Bill" 
+                HorizontalAlignment="Left"  VerticalAlignment="Bottom" 
+                Style="{StaticResource buttonStyle2}" Click="viewOrderButton_Click"/>
+
+        <Button Margin="325,0,325,20" x:Name="btnClear" Content="Clear" 
+                HorizontalAlignment="Center"  VerticalAlignment="Bottom" 
+                Style="{StaticResource buttonStyle2}" Click="clearButton_Click"/>
+
+        <Button Margin="0,0,30,20"  x:Name="btnExit" Content="Exit" 
+                HorizontalAlignment="Right"  VerticalAlignment="Bottom"  
+                Style="{StaticResource buttonStyle2}" Click="exitButton_Click"/>
+        
+    </Grid>
+    
+</Window>

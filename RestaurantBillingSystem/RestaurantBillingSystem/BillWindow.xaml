@@ -1,0 +1,35 @@
+﻿<Window x:Class="RestaurantBillingApp.BillWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantBillingApp"
+        mc:Ignorable="d"
+        Title="Restaurant Billing Calculator App" Height="700" Width="650" 
+        Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="buttonStyle1" TargetType="Button">
+            <Setter Property="Width" Value="75"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Background" Value="#800000"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Width="600">
+        <Label Content="Bill Details" Margin="0,20,0,0"  
+               HorizontalAlignment="Center"  VerticalAlignment="Top" 
+               FontSize="20" FontWeight="Bold"/>
+        
+        <TextBox  x:Name="billField" Margin="50,70,50,60" 
+                 TextWrapping="Wrap" Background="#FFF8DC" 
+                 FontFamily="Courier New" IsReadOnly="True"
+                 Padding="100, 20, 100, 20" BorderBrush="#800000"/>
+        
+        
+        <Button FontSize="15"   x:Name="btnExit" Content="Exit" 
+                HorizontalAlignment="Right" Margin="0,30,50,25"
+                VerticalAlignment="Bottom" Width="100" 
+                Style="{StaticResource buttonStyle1}" 
+                Click="exitButton_Click"/>
+    </Grid>
+</Window>
